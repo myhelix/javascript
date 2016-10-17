@@ -133,10 +133,10 @@
 
     ```jsx
     // bad
-    <MyComponent style="fancy" />
+    <MyComponent style='fancy' />
 
     // good
-    <MyComponent variant="fancy" />
+    <MyComponent variant='fancy' />
     ```
 
 ## Declaration
@@ -162,21 +162,21 @@
     ```jsx
     // bad
     <Foo
-      superLongParam="bar"
-      anotherSuperLongParam="baz"
+      superLongParam='bar'
+      anotherSuperLongParam='baz'
     />
 
     // good
-    <Foo superLongParam="bar"
-         anotherSuperLongParam="baz" />
+    <Foo superLongParam='bar'
+         anotherSuperLongParam='baz' />
 
     // if props fit in one line then keep it on the same line
-    <Foo bar="bar" />
+    <Foo bar='bar' />
 
     // children get indented normally
     <Foo
-      superLongParam="bar"
-      anotherSuperLongParam="baz" >
+      superLongParam='bar'
+      anotherSuperLongParam='baz' >
       <Quux />
     </Foo>
     ```
@@ -235,12 +235,12 @@
     ```jsx
     // bad
     <Foo
-      UserName="hello"
+      UserName='hello'
       phone_number={12345678} />
 
     // good
     <Foo
-      userName="hello"
+      userName='hello'
       phoneNumber={12345678} />
     ```
 
