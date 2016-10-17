@@ -22,7 +22,6 @@
 ## Basic Rules
 
   - Only include one React component per file.
-    - However, multiple [Stateless, or Pure, Components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions) are allowed per file. eslint: [`react/no-multi-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md#ignorestateless).
   - Always use JSX syntax.
   - Do not use `React.createElement` unless you're initializing the app from a file that is not JSX.
 
@@ -162,14 +161,14 @@
 
     ```jsx
     // bad
-    <Foo superLongParam="bar"
-         anotherSuperLongParam="baz" />
-
-    // good
     <Foo
       superLongParam="bar"
       anotherSuperLongParam="baz"
     />
+
+    // good
+    <Foo superLongParam="bar"
+         anotherSuperLongParam="baz" />
 
     // if props fit in one line then keep it on the same line
     <Foo bar="bar" />
@@ -177,25 +176,21 @@
     // children get indented normally
     <Foo
       superLongParam="bar"
-      anotherSuperLongParam="baz"
-    >
+      anotherSuperLongParam="baz" >
       <Quux />
     </Foo>
     ```
 
 ## Quotes
 
-  - Always use double quotes (`"`) for JSX attributes, but single quotes for all other JS. eslint: [`jsx-quotes`](http://eslint.org/docs/rules/jsx-quotes)
-
-  > Why? JSX attributes [can't contain escaped quotes](http://eslint.org/docs/rules/jsx-quotes), so double quotes make contractions like `"don't"` easier to type.
-  > Regular HTML attributes also typically use double quotes instead of single, so JSX attributes mirror this convention.
+  - Always use single quotes (`'`) for JSX attributes, and single quotes for all other JS. eslint: [`jsx-quotes`](http://eslint.org/docs/rules/jsx-quotes)
 
     ```jsx
     // bad
-    <Foo bar='bar' />
+    <Foo bar="bar" />
 
     // good
-    <Foo bar="bar" />
+    <Foo bar='bar' />
 
     // bad
     <Foo style={{ left: "20px" }} />
@@ -241,14 +236,12 @@
     // bad
     <Foo
       UserName="hello"
-      phone_number={12345678}
-    />
+      phone_number={12345678} />
 
     // good
     <Foo
       userName="hello"
-      phoneNumber={12345678}
-    />
+      phoneNumber={12345678} />
     ```
 
   - Omit the value of the prop when it is explicitly `true`. eslint: [`react/jsx-boolean-value`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md)
@@ -256,29 +249,27 @@
     ```jsx
     // bad
     <Foo
-      hidden={true}
-    />
+      hidden={true} />
 
     // good
     <Foo
-      hidden
-    />
+      hidden />
     ```
 
-  - Always include an `alt` prop on `<img>` tags. If the image is presentational, `alt` can be an empty string or the `<img>` must have `role="presentation"`. eslint: [`jsx-a11y/img-has-alt`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/img-has-alt.md)
+  - Always include an `alt` prop on `<img>` tags. If the image is presentational, `alt` can be an empty string or the `<img>` must have `role='presentation'`. eslint: [`jsx-a11y/img-has-alt`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/img-has-alt.md)
 
     ```jsx
     // bad
-    <img src="hello.jpg" />
+    <img src='hello.jpg' />
 
     // good
-    <img src="hello.jpg" alt="Me waving hello" />
+    <img src='hello.jpg' alt='Me waving hello' />
 
     // good
-    <img src="hello.jpg" alt="" />
+    <img src='hello.jpg' alt='' />
 
     // good
-    <img src="hello.jpg" role="presentation" />
+    <img src='hello.jpg' role='presentation' />
     ```
 
   - Do not use words like "image", "photo", or "picture" in `<img>` `alt` props. eslint: [`jsx-a11y/img-redundant-alt`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/img-redundant-alt.md)
@@ -287,23 +278,23 @@
 
     ```jsx
     // bad
-    <img src="hello.jpg" alt="Picture of me waving hello" />
+    <img src='hello.jpg' alt='Picture of me waving hello' />
 
     // good
-    <img src="hello.jpg" alt="Me waving hello" />
+    <img src='hello.jpg' alt='Me waving hello' />
     ```
 
   - Use only valid, non-abstract [ARIA roles](https://www.w3.org/TR/wai-aria/roles#role_definitions). eslint: [`jsx-a11y/aria-role`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/aria-role.md)
 
     ```jsx
     // bad - not an ARIA role
-    <div role="datepicker" />
+    <div role='datepicker' />
 
     // bad - abstract ARIA role
-    <div role="range" />
+    <div role='range' />
 
     // good
-    <div role="button" />
+    <div role='button' />
     ```
 
   - Do not use `accessKey` on elements. eslint: [`jsx-a11y/no-access-key`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-access-key.md)
@@ -312,7 +303,7 @@
 
   ```jsx
   // bad
-  <div accessKey="h" />
+  <div accessKey='h' />
 
   // good
   <div />
@@ -325,16 +316,14 @@
   {todos.map((todo, index) =>
     <Todo
       {...todo}
-      key={index}
-    />
+      key={index} />
   )}
 
   // good
   {todos.map(todo => (
     <Todo
       {...todo}
-      key={todo.id}
-    />
+      key={todo.id} />
   ))}
   ```
 
@@ -345,13 +334,11 @@
     ```jsx
     // bad
     <Foo
-      ref="myRef"
-    />
+      ref='myRef' />
 
     // good
     <Foo
-      ref={ref => { this.myRef = ref; }}
-    />
+      ref={ref => { this.myRef = ref; }} />
     ```
 
 ## Parentheses
@@ -361,7 +348,7 @@
     ```jsx
     // bad
     render() {
-      return <MyComponent className="long body" foo="bar">
+      return <MyComponent className='long body' foo='bar'>
                <MyChild />
              </MyComponent>;
     }
@@ -369,7 +356,7 @@
     // good
     render() {
       return (
-        <MyComponent className="long body" foo="bar">
+        <MyComponent className='long body' foo='bar'>
           <MyChild />
         </MyComponent>
       );
@@ -388,10 +375,10 @@
 
     ```jsx
     // bad
-    <Foo className="stuff"></Foo>
+    <Foo className='stuff'></Foo>
 
     // good
-    <Foo className="stuff" />
+    <Foo className='stuff' />
     ```
 
   - If your component has multi-line properties, close its tag on a new line. eslint: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md)
@@ -399,14 +386,14 @@
     ```jsx
     // bad
     <Foo
-      bar="bar"
-      baz="baz" />
+      bar='bar'
+      baz='baz'
+    />
 
     // good
     <Foo
-      bar="bar"
-      baz="baz"
-    />
+      bar='bar'
+      baz='baz' />
     ```
 
 ## Methods
@@ -580,15 +567,5 @@
   > Why? [`isMounted` is an anti-pattern][anti-pattern], is not available when using ES6 classes, and is on its way to being officially deprecated.
 
   [anti-pattern]: https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
-
-## Translation
-
-  This JSX/React style guide is also available in other languages:
-
-  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [JasonBoy/javascript](https://github.com/JasonBoy/javascript/tree/master/react)
-  - ![pl](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Poland.png) **Polish**: [pietraszekl/javascript](https://github.com/pietraszekl/javascript/tree/master/react)
-  - ![kr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/South-Korea.png) **Korean**: [apple77y/javascript](https://github.com/apple77y/javascript/tree/master/react)
-  - ![Br](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Brazil.png) **Portuguese**: [ronal2do/javascript](https://github.com/ronal2do/airbnb-react-styleguide)
-  - ![jp](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Japan.png) **Japanese**: [mitsuruog/javascript-style-guide](https://github.com/mitsuruog/javascript-style-guide/tree/master/react)
 
 **[⬆ back to top](#table-of-contents)**
